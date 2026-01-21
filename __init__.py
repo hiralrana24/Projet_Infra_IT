@@ -15,6 +15,19 @@ def est_authentifie(): #Comm2
 def est_authentifie_user():
     return session.get('authentifie_user')
 
+@app.route('/authentification_user', methods=['GET', 'POST'])
+def authentification_user():
+    if request.method == 'POST':
+        # Vérifier les identifiants user
+        if request.form['username'] == 'user' and request.form['password'] == '12345':
+            session['authentifie_user'] = True
+            return redirect(url_for('fiche_nom'))
+        else:
+            return render_template('formulaire_authentification.html', error=True)
+
+    return render_template('formulaire_authentification.html', error=False)
+
+
 
 @app.route('/')
 def hello_world():
