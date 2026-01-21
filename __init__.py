@@ -12,6 +12,10 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions
 def est_authentifie(): #Comm2
     return session.get('authentifie')
 
+def est_authentifie_user():
+    return session.get('authentifie_user')
+
+
 @app.route('/')
 def hello_world():
     return render_template('hello.html')
