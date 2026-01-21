@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions
 
 # Fonction pour créer une clé "authentifie" dans la session utilisateur
-def est_authentifie(): #Comm
+def est_authentifie(): #Comm2
     return session.get('authentifie')
 
 @app.route('/')
