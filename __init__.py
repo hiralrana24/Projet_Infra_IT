@@ -27,6 +27,24 @@ def authentification_user():
 
     return render_template('formulaire_authentification.html', error=False)
 
+@app.route('/fiche_nom/', methods=['GET', 'POST'])
+def fiche_nom():
+    if not est_authentifie_user():
+        return redirect(url_for('authentification_user'))
+
+    data = None
+    if request.method == 'POST':
+        nom = request.form['nom']
+
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM clients WHERE nom = ?", (nom,))
+        data = cursor.fetchall()
+        conn.close()
+
+    return render_template('fiche_nom.html', data=data)
+
+
 
 
 @app.route('/')
