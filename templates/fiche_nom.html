@@ -1,0 +1,16 @@
+<h2>Recherche d’un client par nom</h2>
+
+<form method="post">
+    <label>Nom du client :</label>
+    <input type="text" name="nom" required>
+    <button type="submit">Rechercher</button>
+</form>
+
+{% if data %}
+    <h3>Résultats :</h3>
+    <ul>
+    {% for client in data %}
+        <li>{{ client }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
