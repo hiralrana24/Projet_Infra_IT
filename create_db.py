@@ -1,4 +1,5 @@
 import sqlite3
+import os
 
 connection = sqlite3.connect('database.db')
 
@@ -18,3 +19,28 @@ cur.execute("INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)",('LEFE
 
 connection.commit()
 connection.close()
+
+DB_NAME = "database.db"
+
+def create_database():
+    # Connexion (crée le fichier s'il n'existe pas)
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    # Création de la table taches
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS taches (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        titre TEXT NOT NULL,
+        description TEXT,
+        date_echeance DATE,
+        terminee INTEGER DEFAULT 0
+    );
+    """)
+
+    conn.commit()
+    conn.close()
+    print("✅ Base de données et table 'taches' créées avec succès.")
+
+if __name__ == "__main__":
+    create_database()
