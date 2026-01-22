@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des tâches</title>
+</head>
+<body>
+  <h2>Liste des tâches</h2>
+
+  <ul>
+    {% for tache in taches %}
+      <li>
+        <strong>{{ tache.titre }}</strong><br>
+        {{ tache.description }}<br>
+        Échéance : {{ tache.date_echeance }}<br>
+        Statut :
+        {% if tache.terminee %}
+          ✅ Terminée
+        {% else %}
+          ❌ En cours
+        {% endif %}
+        <br>
+
+        {% if not tache.terminee %}
+          <a href="/terminer/{{ tache.id }}">Marquer terminée</a> |
+        {% endif %}
+        <a href="/supprimer/{{ tache.id }}">Supprimer</a>
+      </li>
+      <hr>
+    {% endfor %}
+  </ul>
+
+  <a href="/">Retour accueil</a>
+</body>
+</html>
