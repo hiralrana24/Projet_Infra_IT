@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gestionnaire de tâches</title>
+</head>
+<body>
+  <h1>Mini Gestionnaire de Tâches</h1>
+
+  <nav>
+    <a href="/ajouter">Ajouter une tâche</a> |
+    <a href="/liste">Voir les tâches</a>
+  </nav>
+</body>
+</html>
